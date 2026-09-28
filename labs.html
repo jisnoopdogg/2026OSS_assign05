@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            width: 200px;
+            height: 50px;
+            background-color: yellow;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="list">
+        <p id="item1">Apple</p>
+        <p id="item2">Banana</p>
+        <p id="item3">Orange</p>
+    </div>
+
+    <button id="deletebtn">삭제</button>
+
+    <script>
+        const item = document.querySelector("#item2");
+        const button = document.querySelector("#deletebtn");
+
+        // button.addEventListener("click", function() {
+        //     item.remove();
+        // });
+
+        const list = document.querySelector("#list");
+        button.addEventListener("click", function() {
+            list.removeChild(item);
+        });
+    </script>
+
+    <hr />
+
+    <h3>동적 요소 추가</h3>
+    <button id="addbtn">동적요소 추가</button>
+    <div id="container"></div>
+
+    <script>
+        const addbtn = document.querySelector("#addbtn");
+    
+    const container = document.querySelector("#container");
+
+    addbtn.addEventListener("click",function(){
+        const p = document.createElement("p");
+        p.textContent = "새 문단입니다.";
+        container.appendChild(p);
+    });
+    </script>
+    <hr />
+
+
+
+
+
+    <b3>Click 이벤트</b3>
+    <button id="clickbtn1">눌러보세요(alert)</button>
+    <button id="clickbtn2">눌러보세요(innerText)</button>
+    <button id="clickbtn3">눌러보세요(innerHTML)</button>
+    <div id="skr">여기에 데이터가 바뀜니다!</div>
+
+    <script>
+        const btn1 = document.querySelector("#clickbtn1");
+    btn1.addEventListener("click", function(){
+        alert("버튼 클릭")
+    });
+    const btn2 = document.querySelector("#clickbtn2");
+    btn2.addEventListener("click", function(){
+        document.querySelector("#skr").innerText = "<b>innerText!</b>"
+    });
+    const btn3 = document.querySelector("#clickbtn3");
+    btn3.addEventListener("mouseover", function(){
+        document.querySelector("#skr").innerHTML = "<b>mouseover~</b>"
+    });
+    </script>
+
+    <hr />
+
+    <!-- 계산기 -->
+        <input type="text" id="num1" name="num1" size="5">
+        <input type="text" id="num2" name="num2" size="5">
+        <button type="button" onclick="add()" id="btn">+</button>
+        <input type="text" id="result" name="result" size="5" readonly>
+
+        <script>
+            function add() {
+        // document는 현재 페이지의 DOM 전체 구조를 가리킴
+        const num1 = document.querySelector("#num1").value;
+        const num2 = document.querySelector("#num2").value;
+        // 기본 타입은 다 문자열
+        const result = Number(num1) + Number(num2);
+        document.querySelector("#result").value = result;
+    }
+        </script>
+
+        <!-- inner html / innertext / textcontent 3개 차이점 알기-->
+    <div id="div1" onclick="changeText()">Hello</div>
+
+</body>
+</html>
+
+<script>
+    function changeText() {
+        document.getElementById("div1").innerHTML = "<h1>Hello World!</h1>";
+    }
+
+    const div1 = document.querySelector("#div1");
+    div1.innerHTML = "Hello World";
+
+
+</script>
