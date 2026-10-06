@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            const text1 = document.getElementById("text1");
+            const btn1 = document.querySelector("#btn1");
+            const list = document.querySelector("#list");
+            btn1.addEventListener("click", function () {
+                const data = text1.value.split(",");
+                for(let i=0; i<data.length; i++){
+                    const li = document.createElement("li");
+                    li.textContent = data[i] + " ";
+                    const rbtn = document.createElement("button");
+                    rbtn.innerText = "삭제";
+                    rbtn.addEventListener("click", function(e){
+                        e.target.parentElement.remove();
+                    });
+                    li.appendChild(rbtn);
+                    list.appendChild(li);
+                }
+                text1.value = "";
+            });
+        };
+    </script>
+
+</head>
+
+<body>
+    <input type="text" id="text1">
+    <button id="btn1">추가</button>
+    <ul id="list">
+
+    </ul>
+</body>
+
+</html>
+
+<script>
+
+
+</script>
