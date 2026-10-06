@@ -11,26 +11,119 @@
         title: "Airpods Pro 2",
         category: "device",
         price: 250000,
-        condition: "new"
+        condition: "new",
+        status: "onsale"
     },
     {
         id: 2,
         title: "Wood Desk",
-        category: "house",
+        category: "home",
         price: 30000,
-        condition: "lightly used"
+        condition: "lightly used",
+        status: "reserved"
     },
     {
         id: 3,
         title: "Nike Jacket",
         category: "clothing",
         price: 80000,
-        condition: "heavily used"
+        condition: "heavily used",
+        status: "sold"
     }
 ];
     </script>
 </head>
 <body>
-    
+    <h2>당근 물품 관리</h2>
+    <label for="title">품목</label>
+    <input type="text" id="title" name="title"><br><br>
+
+    <label for="category">카테고리</label>
+    <input type="text" id="category" list="categorylist">
+        <datalist id="categorylist">
+            <option value="device">
+            <option value="home">
+            <option value="clothing">
+        </datalist>
+        <br><br>
+
+    <label for="price">가격</label>
+    <input type="number" id="price" min="0" step="1000"><br><br>
+
+    <label for="condition">상태</label>
+    <select id="condition">
+        <option value="">-- 선택 --</option>
+        <option value="new">새상품</option>
+        <option value="lightly used">사용감 적음</option>
+        <option value="heavily used">사용감 많음</option>
+    </select><br><br>
+
+    <fieldset>
+        <legend>판매 상태</legend>
+            <input type="radio" id="onsale" name="status" value="onsale">
+            <label for="onsale">판매중</label><br>
+            <input type="radio" id="reserved" name="status" value="reserved">
+            <label for="reserved">예약중</label><br>
+            <input type="radio" id="sold" name="status" value="sold">
+            <label for="sold">거래 완료</label><br>
+    </fieldset>
+
+    <button id="add">ADD</button>
+
+    <hr>
+
+    <h2>물품 목록</h2>
+    <table id="itemField">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>품목</th>
+                <th>카테고리</th>
+                <th>가격</th>
+                <th>상태</th>
+                <th>판매 상태</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="itemList">
+            <tr>
+                <td>1</td>
+                <td>Airpods Pro 2</td>
+                <td>device</td>
+                <td>250000</td>
+                <td>new</td>
+                <td>onsale</td>
+                <td>
+                    <button class="edit">수정</button>
+                    <button class="delete">삭제</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Wood Desk</td>
+                <td>home</td>
+                <td>30000</td>
+                <td>lightly used</td>
+                <td>reserved</td>
+                <td>
+                    <button class="edit">수정</button>
+                    <button class="delete">삭제</button>
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Nike Jacket</td>
+                <td>clothing</td>
+                <td>80000</td>
+                <td>heavily used</td>
+                <td>sold</td>
+                <td>
+                    <button class="edit">수정</button>
+                    <button class="delete">삭제</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
 </body>
 </html>
