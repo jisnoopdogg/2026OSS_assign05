@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function hello() {
+            alert("Hello World!!!");
+        }
+        window.addEventListener("load", function () {
+            const btn1 = document.querySelector("#btn1");
+            // hello 쓰면 콜백이고 hello()하면 바로 실행. 콜백 함수는 이벤트 객체(누가 눌려졌는지)가 넘어온다 첫번째 파라미터로
+            btn1.addEventListener("click", hello);
+        });
+
+
+
+        window.addEventListener("load",function(){
+            const fruit = document.querySelector("#fruit");
+            const btnfrt = document.querySelector("#btnfrt");
+            const list = document.querySelector("#list");
+            btnfrt.addEventListener("click", function(){
+                // 입력받는 데이터 가져오기 (split은 배열으로 나눔)
+                const data = fruit.value.split(",");
+                for(i=0; i < data.length; i++){
+                    const one = document.createElement("li");
+                    one.textContent = data[i] + " ";
+                    const rbtn = document.createElement("button");
+                    rbtn.textContent = "X";
+                    // event 객체하는 이유 : 자기만 지우는게 아니라 감싸는 li 전체를 지워야해
+                    rbtn.addEventListener("click", function(e){
+                            e.target.parentElement.remove();
+                    });
+
+                    one.appendChild(rbtn);
+                    list.appendChild(one);
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <!-- inline -->
+    <button onclick="alert('Hello World~')">Click ME</button>
+    <!-- inline + function -->
+    <button onclick="Click()">버튼티비</button>
+    <!-- 하단 script -->
+    <button id="btn0">나도 눌러줘</button>
+    <!-- 상단 script (load 다음) -->
+    <button id="btn1">Click me~</button>
+    <br>
+
+    <input type="text" id="fruit" placeholder="과일을 입력하세요">
+    <button id="btnfrt">추가</button>
+    <ul id="list">
+       
+    </ul>
+
+</body>
+
+</html>
+<script>
+    function Click() {
+        alert("Hellllllllo");
+    }
+
+    const btn0 = document.querySelector("#btn0");
+    btn0.addEventListener("click", function(){
+        alert("0번 버튼 누름");
+    });
+
+
+
+</script>
