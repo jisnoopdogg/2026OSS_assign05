@@ -42,7 +42,9 @@
             const conditionInput = document.querySelector("#condition");
             const itemForm = document.querySelector("#itemForm");
 
-            addbtn.addEventListener("click", function() {
+            render();
+
+            addbtn.addEventListener("click", function () {
                 titleInput.value = titleInput.value.trim();
                 categoryInput.value = categoryInput.value.trim();
 
@@ -67,11 +69,56 @@
 
                 items.push(newItem);
                 nextId++;
-                console.log(items);
+                render();
 
                 itemForm.reset();
             });
         };
+
+        function render() {
+            const itemList = document.querySelector("#itemList");
+            itemList.innerHTML = "";
+
+            items.forEach(function (item) {
+                const tr = document.createElement("tr");
+                const idtd = document.createElement("td");
+                idtd.textContent = item.id;
+                tr.appendChild(idtd);
+
+                const titleTd = document.createElement("td");
+                titleTd.textContent = item.title;
+                tr.appendChild(titleTd);
+                const categoryTd = document.createElement("td");
+                categoryTd.textContent = item.category;
+                tr.appendChild(categoryTd);
+                const priceTd = document.createElement("td");
+                priceTd.textContent = item.price;
+                tr.appendChild(priceTd);
+                const conditionTd = document.createElement("td");
+                conditionTd.textContent = item.condition;
+                tr.appendChild(conditionTd);
+                const statusTd = document.createElement("td");
+                statusTd.textContent = item.status;
+                tr.appendChild(statusTd);
+
+                const btnTd = document.createElement("td");
+
+                const editBtn = document.createElement("button");
+                editBtn.textContent = "수정";
+                editBtn.className = "edit";
+                btnTd.appendChild(editBtn);
+
+                const deleteBtn = document.createElement("button");
+                deleteBtn.textContent = "삭제";
+                deleteBtn.className = "delete";
+                btnTd.appendChild(deleteBtn);
+
+                tr.appendChild(btnTd);
+
+                itemList.appendChild(tr);
+            });
+
+        }
 
 
     </script>
@@ -132,42 +179,7 @@
             </tr>
         </thead>
         <tbody id="itemList">
-            <tr>
-                <td>1</td>
-                <td>Airpods Pro 2</td>
-                <td>device</td>
-                <td>250000</td>
-                <td>new</td>
-                <td>onsale</td>
-                <td>
-                    <button class="edit">수정</button>
-                    <button class="delete">삭제</button>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Wood Desk</td>
-                <td>home</td>
-                <td>30000</td>
-                <td>lightly used</td>
-                <td>reserved</td>
-                <td>
-                    <button class="edit">수정</button>
-                    <button class="delete">삭제</button>
-                </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Nike Jacket</td>
-                <td>clothing</td>
-                <td>80000</td>
-                <td>heavily used</td>
-                <td>sold</td>
-                <td>
-                    <button class="edit">수정</button>
-                    <button class="delete">삭제</button>
-                </td>
-            </tr>
+
         </tbody>
     </table>
 
