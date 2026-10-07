@@ -79,7 +79,7 @@
                     target.price = price;
                     target.condition = condition;
                     target.status = statusChecked.value;
-                    
+
                     editId = null;
                 }
 
@@ -133,6 +133,10 @@
                 editBtn.addEventListener("click", function () {
                     editForm(item);
                 });
+                deleteBtn.addEventListener("click", function () {
+                    deleteItem(item.id);
+                });
+
             });
 
         }
@@ -150,6 +154,18 @@
             statusRadio.checked = true;
 
             editId = item.id;
+        }
+
+        function deleteItem(id) {
+            if (!confirm("삭제하시겠습니까?")) {
+                return;
+            }
+
+            items = items.filter(function (item) {
+                return item.id !== id;
+            });
+
+            render();
         }
 
 
