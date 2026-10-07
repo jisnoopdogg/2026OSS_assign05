@@ -33,6 +33,7 @@
             }
         ];
         let nextId = 4;
+        let editId = null;
 
         window.onload = function () {
             const addbtn = document.querySelector("#addbtn");
@@ -58,19 +59,31 @@
                 const condition = conditionInput.value;
                 const statusChecked = document.querySelector('input[name="status"]:checked');
 
-                const newItem = {
-                    id: nextId,
-                    title: title,
-                    category: category,
-                    price: price,
-                    condition: condition,
-                    status: statusChecked.value
-                };
+                if (editId === null) {
+                    const newItem = {
+                        id: nextId,
+                        title: title,
+                        category: category,
+                        price: price,
+                        condition: condition,
+                        status: statusChecked.value
+                    };
+                    items.push(newItem);
+                    nextId++;
+                } else {
+                    const target = items.find(function (item) {
+                        return item.id === editId;
+                    });
+                    target.title = title;
+                    target.category = category;
+                    target.price = price;
+                    target.condition = condition;
+                    target.status = statusChecked.value;
+                    
+                    editId = null;
+                }
 
-                items.push(newItem);
-                nextId++;
                 render();
-
                 itemForm.reset();
             });
         };
@@ -116,8 +129,27 @@
                 tr.appendChild(btnTd);
 
                 itemList.appendChild(tr);
+
+                editBtn.addEventListener("click", function () {
+                    editForm(item);
+                });
             });
 
+        }
+
+        function editForm(item) {
+            const titleInput = document.querySelector("#title");
+            const categoryInput = document.querySelector("#category");
+            const priceInput = document.querySelector("#price");
+            const conditionInput = document.querySelector("#condition");
+            const statusRadio = document.getElementById(item.status);
+            titleInput.value = item.title;
+            categoryInput.value = item.category;
+            priceInput.value = item.price;
+            conditionInput.value = item.condition;
+            statusRadio.checked = true;
+
+            editId = item.id;
         }
 
 
