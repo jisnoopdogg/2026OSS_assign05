@@ -5,6 +5,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>당근 물품 관리</title>
+    <style>
+        body {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: sans-serif;
+            background-color: #ffe8cc;
+        }
+
+        form {
+            padding: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        form label {
+            display: inline-block;
+            width: 80px;
+        }
+
+        fieldset {
+            margin-bottom: 12px;
+            border: none;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 200px;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 6px 12px;
+            border: 1px solid lightskyblue;
+            border-radius: 4px;
+            background-color: lightskyblue;
+            color: white;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        tr {
+            background-color: lightgoldenrodyellow;
+        }
+
+        th {
+            background-color: lightsalmon;
+        }
+
+        .edit {
+            padding: 4px 8px;
+            margin-right: 8px;
+        }
+
+        .delete {
+            padding: 4px 8px;
+            border-color: #c00;
+            background-color: #c00;
+            color: white;
+        }
+
+        button:hover {
+            background-color: orange;
+            border: 1px solid orange;
+        }
+
+        tbody tr:hover {
+            background-color: lightblue;
+        }
+    </style>
     <script>
         let items = [
             {
@@ -210,8 +294,6 @@
 
         <button type="button" id="addbtn">ADD</button>
     </form>
-
-    <hr>
 
     <h2>물품 목록</h2>
     <table id="itemField">
